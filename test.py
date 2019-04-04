@@ -4,6 +4,7 @@ import xlrd
 import numpy as np
 import pandas as pd
 from xlutils.copy import copy
+from acid import aim_amino_acid
 
 
 aim_amino_acid = ['S','T','Y']
@@ -33,20 +34,11 @@ value_list = {
 }
 
 
-class amino_acid:
-    def __init__(self, str_data):
-        self.value = self.to_value(str_data)
 
 
-    def to_value(self, str_data):
-        row_mode = []
-        for i in list(str_data):
-            value = value_list[i]
-            row_mode.append(value)
-        row_mode = np.array(row_mode)
-        return row_mode
 
-
+# 保存data
+'''
 data = xlrd.open_workbook('Data.xlsx')
 then_excel = copy(data)
 sheet0 = data.sheets()[0]
@@ -72,5 +64,5 @@ np.save("mydata.npy",this_data)
 #     if i not in all_keys:
 #         print(k,'--',i) # no print
 
-
+'''
 
