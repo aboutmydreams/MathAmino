@@ -54,7 +54,19 @@ for i in range(1,401):
 then_excel.save('thendata.xlsx')
 this_data = np.array(this_data)
 np.save("mydata.npy",this_data)
+'''
+# 保存csv
+datas = np.load('mydata.npy')
+acids = datas.tolist()
+aims = np.ones(200).tolist() + np.zeros(200).tolist()
+acids_datas = {'acids': acids,'aims': aims}
+df_data = pd.DataFrame(acids_datas)
 
+print(df_data.head(10))
+df_data.to_csv('mydata.csv')
+
+
+'''
 # 验证数据的正确性
 
 # print(len(this_data),this_data[0])
