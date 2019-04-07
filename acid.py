@@ -31,6 +31,7 @@ value_list = {
 class amino_acid:
     def __init__(self, str_data):
         self.value = self.to_value(str_data)
+        self.counts = self.count_it(str_data)
 
 
     def to_value(self, str_data):
@@ -41,5 +42,13 @@ class amino_acid:
         row_mode = np.array(row_mode)
         return row_mode
 
-    def cont_it(self,str_data):
+    def count_it(self,str_data):
+        c = Counter(str_data)
+        count_list = []
+        for k in value_list.keys():
+            count_list.append(c[k])
+        return count_list
+            
         
+aaa = amino_acid('AAOOLLL')
+print(aaa.counts)
