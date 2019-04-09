@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 from collections import Counter
 
 aim_amino_acid = ['S','T','Y']
@@ -32,7 +33,16 @@ class amino_acid:
     def __init__(self, str_data):
         self.value = self.to_value(str_data)
         self.counts = self.count_it(str_data)
-
+        self.mean_valueS1 = self.near_value(str_data,value_list,near_n=1,no_S=0).mean()
+        self.mean_value1 = self.near_value(str_data,value_list,near_n=1,no_S=1).mean()
+        self.mean_valueS2 = self.near_value(str_data,value_list,near_n=2,no_S=0).mean()
+        self.mean_value2 = self.near_value(str_data,value_list,near_n=2,no_S=1).mean()
+        self.mean_valueS3 = self.near_value(str_data,value_list,near_n=3,no_S=0).mean()
+        self.mean_value3 = self.near_value(str_data,value_list,near_n=3,no_S=1).mean()
+        self.mean_valueS4 = self.near_value(str_data,value_list,near_n=4,no_S=0).mean()
+        self.mean_value4 = self.near_value(str_data,value_list,near_n=4,no_S=1).mean()
+        self.mean_valueS5 = self.near_value(str_data,value_list,near_n=5,no_S=0).mean()
+        self.mean_value5 = self.near_value(str_data,value_list,near_n=5,no_S=1).mean()
 
     def to_value(self, str_data):
         row_mode = []
@@ -48,7 +58,27 @@ class amino_acid:
         for k in value_list.keys():
             count_list.append(c[k])
         return count_list
-            
+
+    def near_value(self,str_data,data_list,near_n,no_S=1):
+        vas = []
+        for one_str in list(str_data[7-near_n:8+near_n]):
+            va = data_list[one_str]
+            vas.append(va)
+        if no_S==1:
+            length = len(vas)
+            S_site = length//2
+            vas.pop(S_site)
         
-aaa = amino_acid('AAOOLLL')
-print(aaa.counts)
+        def dele_zero(li):
+            if 0 in li:
+                li.remove(0)
+                return dele_zero(li)
+            else:
+                return li
+        
+        vas = dele_zero(vas)
+        return np.array(vas)
+
+        
+
+
