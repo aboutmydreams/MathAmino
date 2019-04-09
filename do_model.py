@@ -50,10 +50,10 @@ def to_np():
 
 
 
-
+# 加载模型
 # model = load_model('data/model.h5')
-#model = load_model('best_models/model7.h5')
-model = load_model('test_models/model1.h5')
+# model = load_model('best_models/model700.h5')
+# model = load_model('test_models/model10.h5')
 
 
 # json_string = model.to_json()
@@ -94,20 +94,24 @@ print(data)
 
 
 data = np.load('data/counts1.npy')
-for k,i in enumerate(to_np().tolist()):
-    i1 = np.array([i])
-    ans = model.predict_classes(i1)
-    print(k,'=====',ans)
+def test_pre(model):
+    model0 = load_model(model)
+    for k,i in enumerate(to_np().tolist()):
+        i1 = np.array([i])
+        ans = model0.predict_classes(i1)
+        print(k,'=====',ans)
 
 
+test_pre('test_models/model2.h5')
 
+'''
 #print(data)
 dense1_layer_model = Model(inputs=model.input,outputs=model.get_layer('Dense_1').output)
 dense1_output = dense1_layer_model.predict(to_np())
 
 print (dense1_output.shape)
 
-'''
+
 #获得某一层的权重和偏置
 weight_Dense_1,bias_Dense_1 = model.get_layer('Dense_1').get_weights()
 print(weight_Dense_1.shape,bias_Dense_1.shape)
