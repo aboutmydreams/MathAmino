@@ -43,6 +43,8 @@ class amino_acid:
         self.mean_value4 = self.near_value(str_data,value_list,near_n=4,no_S=1).mean()
         self.mean_valueS5 = self.near_value(str_data,value_list,near_n=5,no_S=0).mean()
         self.mean_value5 = self.near_value(str_data,value_list,near_n=5,no_S=1).mean()
+        self.mean_value6 = self.near_value(str_data,value_list,near_n=6,no_S=1).mean()
+        self.mean_value7 = self.near_value(str_data,value_list,near_n=7,no_S=1).mean()
 
     def to_value(self, str_data):
         row_mode = []
@@ -55,7 +57,7 @@ class amino_acid:
     def count_it(self,str_data):
         c = Counter(str_data)
         count_list = []
-        for k in value_list.keys():
+        for k in list(value_list.keys()): #['L','D','F','C','P','S','W','Y','I','V','O']:
             count_list.append(c[k])
         return count_list
 
