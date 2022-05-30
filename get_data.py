@@ -57,8 +57,7 @@ np.save("data/mydata.npy",this_data)
 '''
 
 def good_num(num):
-    go_num = (num-0.5)*2
-    return go_num
+    return (num-0.5)*2
 
 
 # 保存原始csv

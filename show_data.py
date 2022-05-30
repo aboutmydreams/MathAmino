@@ -29,13 +29,13 @@ value_list = {
 
 df = pd.read_csv('data/test_data.csv')
 
-data1 = df[0:200][list(value_list.keys())]
+data1 = df[:200][list(value_list.keys())]
 data2 = df[200:400][list(value_list.keys())]
 
 # print(data1.apply(sum).tolist())
 # print(list(value_list.keys()))
 # print(df.columns)
-data3 = df[0:200][['vs1', 'vs2', 'vs3', 'vs4', 'vs5']]
+data3 = df[:200][['vs1', 'vs2', 'vs3', 'vs4', 'vs5']]
 data4 = df[200:400][['vs1',  'vs2', 'vs3', 'vs4', 'vs5']]
 print(data3.mean().tolist())
 print(data4.mean().tolist())
@@ -66,10 +66,10 @@ def show_acid_nums_img():
 
     # 为每个条形图添加数值标签
     for k,is_able in enumerate(is_able):
-        plt.text(k, is_able+20, '%s' %int(is_able))
+        plt.text(k, is_able+20, f'{int(is_able)}')
 
     for k,un_able in enumerate(un_able):
-        plt.text(k+bar_width, un_able+10, '%s' %int(un_able))
+        plt.text(k+bar_width, un_able+10, f'{int(un_able)}')
     # 显示图例
     plt.legend(prop=my_font)
     # 显示图形
@@ -101,10 +101,10 @@ def show_acid_value_img():
 
     # 为每个条形图添加数值标签
     for k,is_able in enumerate(is_able):
-        plt.text(k, is_able+20, '%s' %(is_able))
+        plt.text(k, is_able+20, f'{is_able}')
 
     for k,un_able in enumerate(un_able):
-        plt.text(k+bar_width, un_able+10, '%s' %(un_able))
+        plt.text(k+bar_width, un_able+10, f'{un_able}')
     # 显示图例
     plt.legend(prop=my_font)
     # 显示图形

@@ -14,7 +14,7 @@ from sklearn.model_selection import train_test_split
 #[7,70,72,73,79,700,708,729]
 
 for i in range(10):
-    model = load_model('test_models/model{}.h5'.format(str(i)))
+    model = load_model(f'test_models/model{str(i)}.h5')
     test_train_data = np.load('data/counts1.npy')
     aims = pd.read_csv('data/mydata.csv')
     x_test = test_train_data

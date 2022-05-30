@@ -62,9 +62,12 @@ def get_best(num):
 
     plot_model(model, to_file='model1.png',show_shapes=True)
     # history.loss_plot('epoch')
-    model.save('test_models/model{}.h5'.format(str(num)))
+    model.save(f'test_models/model{str(num)}.h5')
     logs = open('test_models/logs.txt','a')
-    logs.write(str(num) + '==' + str(accuracy1) + '||' + str(accuracy) + '||' + str(loss1) + '||' + str(loss) + '--------------\n')
+    logs.write(
+        f'{str(num)}=={str(accuracy1)}||{str(accuracy)}||{str(loss1)}||{str(loss)}'
+        + '--------------\n'
+    )
 
 def train_best(model0,epoch=200,num=1):
     tensorboard = TensorBoard(log_dir='log/')
@@ -94,7 +97,7 @@ def train_best(model0,epoch=200,num=1):
     print('accuracy:',accuracy1)
 
 
-    model.save('train_models/{}.h5'.format(str(num)))
+    model.save(f'train_models/{str(num)}.h5')
     # logs = open('test_models/logs.txt','a')
     # logs.write(str(num) + '==' + str(accuracy1) + '||' + str(accuracy) + '||' + str(loss1) + '||' + str(loss) + '--------------\n')
 
@@ -103,5 +106,5 @@ def train_best(model0,epoch=200,num=1):
     # train_best(model0='test_models/model10.h5',epoch=200,num=i)
 
 for i in range(10):
-    test_pre('test_models/model{}.h5'.format(str(i)))
+    test_pre(f'test_models/model{str(i)}.h5')
     print('---'*10)

@@ -67,14 +67,11 @@ def to_np():
 
     acid_pd_count = pd.DataFrame(acids_counts,columns=column_names)
     acid_pd_count = acid_pd_count.astype('float')
-    # acid_pd_count.to_csv('data/test_data.csv')
-    np_count = np.array(acid_pd_count)
-    return np_count
+    return np.array(acid_pd_count)
 
 def to_np2():
     def good_num(num):
-        go_num = (num-0.5)*2
-        return go_num
+        return (num-0.5)*2
 
     all_counts = []
     
@@ -152,9 +149,8 @@ def new_pre():
     need_data = need_data.drop(['Unnamed: 0'],axis=1)
     print(need_data.style)
     need_data = need_data.values
-    the_acids = need_data[:10]
     # print(the_acids)
-    return the_acids
+    return need_data[:10]
 
 
 '''

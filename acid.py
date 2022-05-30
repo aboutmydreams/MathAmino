@@ -46,19 +46,13 @@ class amino_acid:
         self.mean_value7 = self.near_value(str_data,value_list,near_n=7,no_S=1).mean()
 
     def to_value(self, str_data):
-        row_mode = []
-        for i in list(str_data):
-            value = value_list[i]
-            row_mode.append(value)
+        row_mode = [value_list[i] for i in list(str_data)]
         row_mode = np.array(row_mode)
         return row_mode
 
     def count_it(self,str_data):
         c = Counter(str_data)
-        count_list = []
-        for k in list(value_list.keys()): #['L','D','F','C','P','S','W','Y','I','V','O']:
-            count_list.append(c[k])
-        return count_list
+        return [c[k] for k in list(value_list.keys())]
 
     def near_value(self,str_data,data_list,near_n,no_S=1):
         vas = []
@@ -71,11 +65,10 @@ class amino_acid:
             vas.pop(S_site)
         
         def dele_zero(li):
-            if 0 in li:
-                li.remove(0)
-                return dele_zero(li)
-            else:
+            if 0 not in li:
                 return li
+            li.remove(0)
+            return dele_zero(li)
         
         vas = dele_zero(vas)
         return np.array(vas)

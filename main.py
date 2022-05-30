@@ -60,7 +60,7 @@ def train_model():
     kernel_initializer=random_normal(stddev=0.01),
     bias_initializer=b_initializer,
     activation='tanh',
-    name="Dense_1")) 
+    name="Dense_1"))
     # bias_initializer='one',activation='tanh','sigmoid'
     # model.add(LSTM(20, input_shape=(x_train.shape[1], x_train.shape[2]),activation='sigmoid'))
 
@@ -95,11 +95,11 @@ def train_model():
     history.loss_plot('epoch')
     if accuracy1 >= 0.7:
         rd = str(random.randint(1000,9999))
-        model.save('train_models/{}.h5'.format(str(accuracy1) + rd))
+        model.save(f'train_models/{str(accuracy1) + rd}.h5')
         log = open('log.txt','a')
         log.write(str(accuracy1) + rd + '--' + str(accuracy) + '\n')   
 
-for i in range(1):
+for _ in range(1):
     train_model()
 
 #--------------
